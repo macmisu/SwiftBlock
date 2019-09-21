@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,14 @@
 		0F37AD8522B97C2A00A03D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F37AD8322B97C2A00A03D21 /* Main.storyboard */; };
 		0F37AD9122B97C2A00A03D21 /* ContentBlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37AD9022B97C2A00A03D21 /* ContentBlockerTests.swift */; };
 		0F37AD9C22B97C2A00A03D21 /* ContentBlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37AD9B22B97C2A00A03D21 /* ContentBlockerUITests.swift */; };
+		0F37ADC022B97F5800A03D21 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37ADBF22B97F5800A03D21 /* ListManager.swift */; };
+		0F37ADC322B980CE00A03D21 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0F37ADC222B980CE00A03D21 /* Alamofire */; };
+		0F37ADC522B981C600A03D21 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37ADC422B981C600A03D21 /* ResourceManager.swift */; };
+		0F7E410A22BAC597004A4BB3 /* BlockListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7E410922BAC597004A4BB3 /* BlockListParser.swift */; };
+		0F7E410C22BADF00004A4BB3 /* BlockListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7E410B22BADF00004A4BB3 /* BlockListGenerator.swift */; };
+		0F9C3B9522BB5E4800CAD53D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F37ADAF22B97C5400A03D21 /* Cocoa.framework */; };
+		0F9C3B9A22BB5E4800CAD53D /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C3B9922BB5E4800CAD53D /* ContentBlockerRequestHandler.swift */; };
+		0F9C3B9F22BB5E4800CAD53D /* Blocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F9C3B9422BB5E4800CAD53D /* Blocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,10 +39,31 @@
 			remoteGlobalIDString = 0F37AD7622B97C2900A03D21;
 			remoteInfo = ContentBlocker;
 		};
+		0F9C3B9D22BB5E4800CAD53D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F37AD6F22B97C2900A03D21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F9C3B9322BB5E4800CAD53D;
+			remoteInfo = Blocker;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0F37ADBE22B97C5400A03D21 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0F9C3B9F22BB5E4800CAD53D /* Blocker.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0F37AD7722B97C2900A03D21 /* ContentBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F37AD7722B97C2900A03D21 /* SwiftBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37AD7A22B97C2900A03D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F37AD7C22B97C2900A03D21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F37AD7E22B97C2A00A03D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,12 +71,21 @@
 		0F37AD8422B97C2A00A03D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F37AD8622B97C2A00A03D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F37AD8722B97C2A00A03D21 /* ContentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ContentBlocker.entitlements; sourceTree = "<group>"; };
-		0F37AD8C22B97C2A00A03D21 /* ContentBlockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContentBlockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F37AD8C22B97C2A00A03D21 /* SwiftBlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37AD9022B97C2A00A03D21 /* ContentBlockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerTests.swift; sourceTree = "<group>"; };
 		0F37AD9222B97C2A00A03D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F37AD9722B97C2A00A03D21 /* ContentBlockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContentBlockerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F37AD9722B97C2A00A03D21 /* SwiftBlockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBlockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37AD9B22B97C2A00A03D21 /* ContentBlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerUITests.swift; sourceTree = "<group>"; };
 		0F37AD9D22B97C2A00A03D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F37ADAF22B97C5400A03D21 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0F37ADBF22B97F5800A03D21 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		0F37ADC422B981C600A03D21 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		0F7E410922BAC597004A4BB3 /* BlockListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListParser.swift; sourceTree = "<group>"; };
+		0F7E410B22BADF00004A4BB3 /* BlockListGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListGenerator.swift; sourceTree = "<group>"; };
+		0F9C3B9422BB5E4800CAD53D /* Blocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Blocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F9C3B9922BB5E4800CAD53D /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
+		0F9C3B9B22BB5E4800CAD53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F9C3B9C22BB5E4800CAD53D /* Blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blocker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F37ADC322B980CE00A03D21 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +111,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F9C3B9122BB5E4800CAD53D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9C3B9522BB5E4800CAD53D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +128,8 @@
 				0F37AD7922B97C2900A03D21 /* ContentBlocker */,
 				0F37AD8F22B97C2A00A03D21 /* ContentBlockerTests */,
 				0F37AD9A22B97C2A00A03D21 /* ContentBlockerUITests */,
+				0F9C3B9622BB5E4800CAD53D /* Blocker */,
+				0F37ADAE22B97C5400A03D21 /* Frameworks */,
 				0F37AD7822B97C2900A03D21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,9 +137,10 @@
 		0F37AD7822B97C2900A03D21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0F37AD7722B97C2900A03D21 /* ContentBlocker.app */,
-				0F37AD8C22B97C2A00A03D21 /* ContentBlockerTests.xctest */,
-				0F37AD9722B97C2A00A03D21 /* ContentBlockerUITests.xctest */,
+				0F37AD7722B97C2900A03D21 /* SwiftBlock.app */,
+				0F37AD8C22B97C2A00A03D21 /* SwiftBlockTests.xctest */,
+				0F37AD9722B97C2A00A03D21 /* SwiftBlockUITests.xctest */,
+				0F9C3B9422BB5E4800CAD53D /* Blocker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,11 +150,15 @@
 			children = (
 				0F37AD7A22B97C2900A03D21 /* AppDelegate.swift */,
 				0F37AD7C22B97C2900A03D21 /* ContentView.swift */,
+				0F37ADBF22B97F5800A03D21 /* ListManager.swift */,
+				0F37ADC422B981C600A03D21 /* ResourceManager.swift */,
 				0F37AD7E22B97C2A00A03D21 /* Assets.xcassets */,
 				0F37AD8322B97C2A00A03D21 /* Main.storyboard */,
 				0F37AD8622B97C2A00A03D21 /* Info.plist */,
 				0F37AD8722B97C2A00A03D21 /* ContentBlocker.entitlements */,
 				0F37AD8022B97C2A00A03D21 /* Preview Content */,
+				0F7E410922BAC597004A4BB3 /* BlockListParser.swift */,
+				0F7E410B22BADF00004A4BB3 /* BlockListGenerator.swift */,
 			);
 			path = ContentBlocker;
 			sourceTree = "<group>";
@@ -135,29 +189,52 @@
 			path = ContentBlockerUITests;
 			sourceTree = "<group>";
 		};
+		0F37ADAE22B97C5400A03D21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F37ADAF22B97C5400A03D21 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F9C3B9622BB5E4800CAD53D /* Blocker */ = {
+			isa = PBXGroup;
+			children = (
+				0F9C3B9922BB5E4800CAD53D /* ContentBlockerRequestHandler.swift */,
+				0F9C3B9B22BB5E4800CAD53D /* Info.plist */,
+				0F9C3B9C22BB5E4800CAD53D /* Blocker.entitlements */,
+			);
+			path = Blocker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0F37AD7622B97C2900A03D21 /* ContentBlocker */ = {
+		0F37AD7622B97C2900A03D21 /* SwiftBlock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F37ADA022B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlocker" */;
+			buildConfigurationList = 0F37ADA022B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlock" */;
 			buildPhases = (
 				0F37AD7322B97C2900A03D21 /* Sources */,
 				0F37AD7422B97C2900A03D21 /* Frameworks */,
 				0F37AD7522B97C2900A03D21 /* Resources */,
+				0F37ADBE22B97C5400A03D21 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0F9C3B9E22BB5E4800CAD53D /* PBXTargetDependency */,
 			);
-			name = ContentBlocker;
+			name = SwiftBlock;
+			packageProductDependencies = (
+				0F37ADC222B980CE00A03D21 /* Alamofire */,
+			);
 			productName = ContentBlocker;
-			productReference = 0F37AD7722B97C2900A03D21 /* ContentBlocker.app */;
+			productReference = 0F37AD7722B97C2900A03D21 /* SwiftBlock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0F37AD8B22B97C2A00A03D21 /* ContentBlockerTests */ = {
+		0F37AD8B22B97C2A00A03D21 /* SwiftBlockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F37ADA322B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlockerTests" */;
+			buildConfigurationList = 0F37ADA322B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlockTests" */;
 			buildPhases = (
 				0F37AD8822B97C2A00A03D21 /* Sources */,
 				0F37AD8922B97C2A00A03D21 /* Frameworks */,
@@ -168,14 +245,14 @@
 			dependencies = (
 				0F37AD8E22B97C2A00A03D21 /* PBXTargetDependency */,
 			);
-			name = ContentBlockerTests;
+			name = SwiftBlockTests;
 			productName = ContentBlockerTests;
-			productReference = 0F37AD8C22B97C2A00A03D21 /* ContentBlockerTests.xctest */;
+			productReference = 0F37AD8C22B97C2A00A03D21 /* SwiftBlockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F37AD9622B97C2A00A03D21 /* ContentBlockerUITests */ = {
+		0F37AD9622B97C2A00A03D21 /* SwiftBlockUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F37ADA622B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlockerUITests" */;
+			buildConfigurationList = 0F37ADA622B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlockUITests" */;
 			buildPhases = (
 				0F37AD9322B97C2A00A03D21 /* Sources */,
 				0F37AD9422B97C2A00A03D21 /* Frameworks */,
@@ -186,10 +263,27 @@
 			dependencies = (
 				0F37AD9922B97C2A00A03D21 /* PBXTargetDependency */,
 			);
-			name = ContentBlockerUITests;
+			name = SwiftBlockUITests;
 			productName = ContentBlockerUITests;
-			productReference = 0F37AD9722B97C2A00A03D21 /* ContentBlockerUITests.xctest */;
+			productReference = 0F37AD9722B97C2A00A03D21 /* SwiftBlockUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		0F9C3B9322BB5E4800CAD53D /* Blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F9C3BA022BB5E4800CAD53D /* Build configuration list for PBXNativeTarget "Blocker" */;
+			buildPhases = (
+				0F9C3B9022BB5E4800CAD53D /* Sources */,
+				0F9C3B9122BB5E4800CAD53D /* Frameworks */,
+				0F9C3B9222BB5E4800CAD53D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Blocker;
+			productName = Blocker;
+			productReference = 0F9C3B9422BB5E4800CAD53D /* Blocker.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -212,9 +306,12 @@
 						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 0F37AD7622B97C2900A03D21;
 					};
+					0F9C3B9322BB5E4800CAD53D = {
+						CreatedOnToolsVersion = 11.0;
+					};
 				};
 			};
-			buildConfigurationList = 0F37AD7222B97C2900A03D21 /* Build configuration list for PBXProject "ContentBlocker" */;
+			buildConfigurationList = 0F37AD7222B97C2900A03D21 /* Build configuration list for PBXProject "SwiftBlock" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,13 +320,17 @@
 				Base,
 			);
 			mainGroup = 0F37AD6E22B97C2900A03D21;
+			packageReferences = (
+				0F37ADC122B980CE00A03D21 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 0F37AD7822B97C2900A03D21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F37AD7622B97C2900A03D21 /* ContentBlocker */,
-				0F37AD8B22B97C2A00A03D21 /* ContentBlockerTests */,
-				0F37AD9622B97C2A00A03D21 /* ContentBlockerUITests */,
+				0F37AD7622B97C2900A03D21 /* SwiftBlock */,
+				0F37AD8B22B97C2A00A03D21 /* SwiftBlockTests */,
+				0F37AD9622B97C2A00A03D21 /* SwiftBlockUITests */,
+				0F9C3B9322BB5E4800CAD53D /* Blocker */,
 			);
 		};
 /* End PBXProject section */
@@ -259,6 +360,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F9C3B9222BB5E4800CAD53D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,7 +375,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F37AD7D22B97C2900A03D21 /* ContentView.swift in Sources */,
+				0F7E410C22BADF00004A4BB3 /* BlockListGenerator.swift in Sources */,
+				0F37ADC022B97F5800A03D21 /* ListManager.swift in Sources */,
 				0F37AD7B22B97C2900A03D21 /* AppDelegate.swift in Sources */,
+				0F37ADC522B981C600A03D21 /* ResourceManager.swift in Sources */,
+				0F7E410A22BAC597004A4BB3 /* BlockListParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,18 +399,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F9C3B9022BB5E4800CAD53D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9C3B9A22BB5E4800CAD53D /* ContentBlockerRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		0F37AD8E22B97C2A00A03D21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F37AD7622B97C2900A03D21 /* ContentBlocker */;
+			target = 0F37AD7622B97C2900A03D21 /* SwiftBlock */;
 			targetProxy = 0F37AD8D22B97C2A00A03D21 /* PBXContainerItemProxy */;
 		};
 		0F37AD9922B97C2A00A03D21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F37AD7622B97C2900A03D21 /* ContentBlocker */;
+			target = 0F37AD7622B97C2900A03D21 /* SwiftBlock */;
 			targetProxy = 0F37AD9822B97C2A00A03D21 /* PBXContainerItemProxy */;
+		};
+		0F9C3B9E22BB5E4800CAD53D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F9C3B9322BB5E4800CAD53D /* Blocker */;
+			targetProxy = 0F9C3B9D22BB5E4800CAD53D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -430,6 +555,7 @@
 		0F37ADA122B97C2A00A03D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.ContentBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.SwiftBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -452,6 +578,7 @@
 		0F37ADA222B97C2A00A03D21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -465,7 +592,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.ContentBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.SwiftBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -488,7 +615,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.ContentBlockerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContentBlocker.app/Contents/MacOS/ContentBlocker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBlock.app/Contents/MacOS/SwiftBlock";
 			};
 			name = Debug;
 		};
@@ -509,7 +636,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.ContentBlockerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContentBlocker.app/Contents/MacOS/ContentBlocker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBlock.app/Contents/MacOS/SwiftBlock";
 			};
 			name = Release;
 		};
@@ -553,10 +680,50 @@
 			};
 			name = Release;
 		};
+		0F9C3BA122BB5E4800CAD53D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Blocker/Blocker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2DETNM9XB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.SwiftBlock.Blocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0F9C3BA222BB5E4800CAD53D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Blocker/Blocker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2DETNM9XB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.cloudwithlightning.SwiftBlock.Blocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F37AD7222B97C2900A03D21 /* Build configuration list for PBXProject "ContentBlocker" */ = {
+		0F37AD7222B97C2900A03D21 /* Build configuration list for PBXProject "SwiftBlock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F37AD9E22B97C2A00A03D21 /* Debug */,
@@ -565,7 +732,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F37ADA022B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlocker" */ = {
+		0F37ADA022B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F37ADA122B97C2A00A03D21 /* Debug */,
@@ -574,7 +741,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F37ADA322B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlockerTests" */ = {
+		0F37ADA322B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F37ADA422B97C2A00A03D21 /* Debug */,
@@ -583,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F37ADA622B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "ContentBlockerUITests" */ = {
+		0F37ADA622B97C2A00A03D21 /* Build configuration list for PBXNativeTarget "SwiftBlockUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F37ADA722B97C2A00A03D21 /* Debug */,
@@ -592,7 +759,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0F9C3BA022BB5E4800CAD53D /* Build configuration list for PBXNativeTarget "Blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F9C3BA122BB5E4800CAD53D /* Debug */,
+				0F9C3BA222BB5E4800CAD53D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F37ADC122B980CE00A03D21 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F37ADC222B980CE00A03D21 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F37ADC122B980CE00A03D21 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F37AD6F22B97C2900A03D21 /* Project object */;
 }

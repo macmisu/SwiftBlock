@@ -9,9 +9,56 @@
 import SwiftUI
 
 struct ContentView : View {
+    @ObservedObject private var lists: ListManager = ListManager()
+
     var body: some View {
-        Text("Hello World")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        List {
+            Text(lists.statusMessage)
+            HStack {
+                Spacer()
+                Button(action: {
+                    self.lists.updateAssetsList()
+                }) {
+                    Text(
+                        self.lists.loadingAssetsList
+                            ? "Loading..."
+                            : self.lists.assetsNeedsUpdate
+                                ? "⚠️ Update outdated assets list"
+                                : "Update assets list"
+                    )
+                }
+
+                Button(action: {
+                    self.lists.updateAssets()
+                }) {
+                    Text("Update assets")
+                }
+
+                if lists.assets != nil {
+                    Button(action: {
+                        self.lists.genBlocklist()
+                    }) {
+                        Text("Generate Blocklist")
+                    }
+                } else {
+                    EmptyView()
+                }
+                Spacer()
+            }
+
+            ForEach(lists.orderedAssets() ?? []) { asset in
+                HStack {
+                    Toggle(isOn: .constant(!asset.off)) {
+                        Text(asset.title ?? "(error)")
+                        Text(asset.id)
+                            .font(.system(.footnote, design: .monospaced))
+                            .foregroundColor(.secondary)
+                    }
+                    Spacer()
+                    Text((self.lists.assetLoadStates[asset.id] ?? .none).toLabel())
+                }
+            }
+        }
     }
 }
 

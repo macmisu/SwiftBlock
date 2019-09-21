@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ContentBlocker
+@testable import SwiftBlock
 
 class ContentBlockerTests: XCTestCase {
 
@@ -19,9 +19,16 @@ class ContentBlockerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFilterParser() {
+        let a = FilterRule.parse(line: "example.com")!
+        XCTAssertEqual(a.urls.count, 1)
+        XCTAssertEqual(a.urls[0], .match("example\\.com"))
+
+        let b = FilterRule.parse(line: "hello,~world###selector")!
+        XCTAssertEqual(b.urls.count, 2)
+        XCTAssertEqual(b.urls[0], .match("hello"))
+        XCTAssertEqual(b.urls[1], .notMatch("world"))
+        XCTAssertEqual(b.selector, "#selector")
     }
 
     func testPerformanceExample() {
