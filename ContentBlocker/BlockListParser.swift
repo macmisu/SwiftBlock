@@ -140,6 +140,14 @@ struct FilterRule: Codable {
             urlPart.removeLast()
         }
 
+        for c in urlPart {
+            if !c.isASCII {
+                NSLog("Skipping rule \(line) because it contains unicode in the URL part and Safari doesn’t like that apparently")
+                // Safari does not like rules like ||rołex.com^$document at all
+                return nil
+            }
+        }
+
         let selector = selectorIndex < mainPart.endIndex
             && mainPart.index(selectorIndex, offsetBy: 1) < mainPart.endIndex
             && mainPart.index(selectorIndex, offsetBy: 2) < mainPart.endIndex

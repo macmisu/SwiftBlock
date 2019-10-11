@@ -42,6 +42,16 @@ class ResourceManager {
         FileManager.default.createFile(atPath: resourceURL.path, contents: contents.data(using: .utf8), attributes: [:])
     }
 
+    public func clearBlocklists() {
+        if let items = try? FileManager.default.contentsOfDirectory(atPath: Self.containerURL.path) {
+            for item in items {
+                if item.starts(with: "blocklist-") {
+                    try? FileManager.default.removeItem(at: Self.containerURL.appendingPathComponent(item))
+                }
+            }
+        }
+    }
+
     public func storeBlocklist(_ data: Data, index: Int) {
         FileManager.default.createFile(atPath: Self.containerURL.appendingPathComponent("blocklist-\(index).json").path, contents: data, attributes: nil)
     }

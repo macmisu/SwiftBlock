@@ -93,6 +93,8 @@ class ListManager : ObservableObject {
             }
         }
 
+        resources.clearBlocklists()
+
         for (i, list) in decls.enumerated() {
             let data = try! JSONEncoder().encode(list)
             resources.storeBlocklist(data, index: i)
